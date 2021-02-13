@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Recipe } from './recipes/recipe.model';
 
 @Component({
   selector: 'app-root',
@@ -17,5 +18,9 @@ export class AppComponent {
   onShoppingListClick(tabName: string){
     console.log('tabName: ' + tabName);
     this.selectedTabName = 'shoppingListTab';
+  }
+
+  onRecipeSelected(selectedRecipe: Recipe){
+    console.log('selected recipe:' + selectedRecipe);
   }
 }
