@@ -1,25 +1,36 @@
-import { EventEmitter } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
+import { Ingredient } from "../shared/ingredient.model";
+import { ShoppingListService } from "../shopping-list/shopplist-list.service";
 import { Recipe } from "./recipe.model";
 
+@Injectable()
 export class RecipeService {
   recipeSelected = new EventEmitter<Recipe>();
 
   private recipes: Recipe[] = [
     new Recipe(
-      "A Test Recipe",
-      "This is a simply a test",
-      "https://assets.simpleviewinc.com/simpleview/image/fetch/c_fill,h_600,q_75,w_900/https://assets.simpleviewinc.com/simpleview/image/upload/v1/clients/flaglercountyfl/Photo_Mar_22_1_00_00_PM_a26f2f50-508f-4f20-898f-65cf5566ea72.jpg"
+      "Tasty Taco",
+      "A really tasty taco.",
+      "https://assets.simpleviewinc.com/simpleview/image/fetch/c_fill,h_600,q_75,w_900/https://assets.simpleviewinc.com/simpleview/image/upload/v1/clients/flaglercountyfl/Photo_Mar_22_1_00_00_PM_a26f2f50-508f-4f20-898f-65cf5566ea72.jpg",
+      [new Ingredient("Meat", 1), new Ingredient("Shell", 2)]
     ),
 
     new Recipe(
-      "Another Test Recipe 2",
-      "This is a simply a test 2",
-      "https://assets.simpleviewinc.com/simpleview/image/fetch/c_fill,h_600,q_75,w_900/https://assets.simpleviewinc.com/simpleview/image/upload/v1/clients/flaglercountyfl/Photo_Mar_22_1_00_00_PM_a26f2f50-508f-4f20-898f-65cf5566ea72.jpg"
+      "Better Tasty Taco",
+      "An even better tasty taco.",
+      "https://assets.simpleviewinc.com/simpleview/image/fetch/c_fill,h_600,q_75,w_900/https://assets.simpleviewinc.com/simpleview/image/upload/v1/clients/flaglercountyfl/Photo_Mar_22_1_00_00_PM_a26f2f50-508f-4f20-898f-65cf5566ea72.jpg",
+      [new Ingredient("Better Meat", 1), new Ingredient("Better Shell", 3)]
     ),
   ];
+
+  constructor(private shoppingListService: ShoppingListService){}
 
   getRecipes() {
     // slice w/o args returns a copy, not a reference
     return this.recipes.slice();
+  }
+
+  addIngredientsToShoppingList(ingredients: Ingredient[]) {
+    this.shoppingListService.addIngredients(ingredients);
   }
 }
