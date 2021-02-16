@@ -1,36 +1,44 @@
-import { 
-  Component, 
-  Output, 
-  EventEmitter, 
-  ViewChild, 
-  ElementRef, 
-  AfterViewInit } from "@angular/core";
+import {
+  Component,
+  Output,
+  EventEmitter,
+  ViewChild,
+  ElementRef
+  //AfterViewInit
+ } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html"
 })
 export class HeaderComponent{
-  @Output() recipesClicked = new EventEmitter<string>();
-  @Output() shoppingListClicked = new EventEmitter<string>();
-  @ViewChild('recipesTab', {static: true}) recipesTab: ElementRef;
-  @ViewChild('shoppingListTab', { static: true }) shoppingListTab: ElementRef;
+  // @Output() recipesClicked = new EventEmitter<string>();
+  // @Output() shoppingListClicked = new EventEmitter<string>();
+  // @ViewChild('recipesTab', {static: true}) recipesTab: ElementRef;
+  // @ViewChild('shoppingListTab', { static: true }) shoppingListTab: ElementRef;
 
-  ngAfterViewInit(): void {
-    this.onRecipesClick();
-  }
+  // constructor(private router: Router){}
 
-  onRecipesClick(){
-    console.log('onRecipesClick');
-    this.recipesClicked.emit('recipesTab');
-    this.recipesTab.nativeElement.style.backgroundColor = 'lightblue';
-    this.shoppingListTab.nativeElement.style.backgroundColor = 'transparent';
-  }
+  // ngAfterViewInit(): void {
+  //   this.onRecipesClick();
+  // }
 
-  onShoppingListClick(){
-    console.log('onShoppingListClick');
-    this.shoppingListClicked.emit('shoppingListTab');
-    this.recipesTab.nativeElement.style.backgroundColor = 'transparent';
-    this.shoppingListTab.nativeElement.style.backgroundColor = 'lightblue';
-  }
+  // onRecipesClick(){
+  //   console.log('onRecipesClick');
+  //   // this.recipesClicked.emit('recipesTab');
+
+  //   // my own styling, I'm sure it'll get improved apon
+  //   this.recipesTab.nativeElement.style.backgroundColor = 'lightblue';
+  //   this.shoppingListTab.nativeElement.style.backgroundColor = 'transparent';
+  // }
+
+  // onShoppingListClick(){
+  //   console.log("onShoppingListClick");
+  //   // this.shoppingListClicked.emit('shoppingListTab');
+
+  //   // my own styling, I'm sure it'll get improved apon
+  //   this.recipesTab.nativeElement.style.backgroundColor = "transparent";
+  //   this.shoppingListTab.nativeElement.style.backgroundColor = "lightblue";
+  // }
 }

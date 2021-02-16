@@ -5,10 +5,11 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-recipes
+      <router-outlet></router-outlet>
+      <!-- <app-recipes
         *ngIf="selectedTabName === 'recipesTab'"
         (recipeSelected)="onRecipeSelected($event)"></app-recipes>
-      <app-shopping-list *ngIf="selectedTabName !== 'recipesTab'"></app-shopping-list>
-    </div>  
+      <app-shopping-list *ngIf="selectedTabName !== 'recipesTab'"></app-shopping-list> -->
+    </div>
   </div>
 </div>
