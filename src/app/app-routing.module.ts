@@ -18,7 +18,7 @@ const appRoutes: Routes = [
       // order on 'new' and ':id' is important. If new is second, Angular sees it as a potenial id.
       { path: "new", component: RecipeEditComponent },
       { path: ":id", component: RecipeDetailComponent },
-      { path: ":id/edit", component: RecipeDetailComponent },
+      { path: ":id/edit", component: RecipeEditComponent },
     ],
   },
   { path: "shopping-list", component: ShoppingListComponent },
