@@ -1,15 +1,8 @@
-<app-header
-  (recipesClicked)="onRecipesClick($event)"
-  (shoppingListClicked)="onShoppingListClick($event)"
-></app-header>
+<app-header></app-header>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
       <router-outlet></router-outlet>
-      <!-- <app-recipes
-        *ngIf="selectedTabName === 'recipesTab'"
-        (recipeSelected)="onRecipeSelected($event)"></app-recipes>
-      <app-shopping-list *ngIf="selectedTabName !== 'recipesTab'"></app-shopping-list> -->
     </div>
   </div>
 </div>
