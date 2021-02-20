@@ -14,6 +14,11 @@ export class RecipeEditComponent implements OnInit {
   editMode = false;
   recipeForm: FormGroup;
 
+  get controls() {
+    // a getter!
+    return (<FormArray>this.recipeForm.get("ingredients")).controls;
+  }
+
   constructor(
     private route: ActivatedRoute,
     private recipeService: RecipeService
@@ -32,9 +37,12 @@ export class RecipeEditComponent implements OnInit {
     console.log(this.recipeForm.value);
   }
 
-  get controls() {
-    // a getter!
-    return (<FormArray>this.recipeForm.get("ingredients")).controls;
+  onAddIngredient() {
+    (<FormArray>this.recipeForm.get('ingredients'))
+      .push( new FormGroup({
+        'name': new FormControl(),
+        'amount': new FormControl()
+      }));
   }
 
   private initForm() {
