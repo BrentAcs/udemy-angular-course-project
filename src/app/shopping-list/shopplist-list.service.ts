@@ -16,16 +16,21 @@ export class ShoppingListService {
     return this.ingredients.slice();
   }
 
-  getIngredient(index: number){
+  getIngredient(index: number) {
     return this.ingredients[index];
   }
 
-  addIngredient(ingredient: Ingredient){
+  addIngredient(ingredient: Ingredient) {
     this.ingredients.push(ingredient);
     this.ingredientsChanged.next(this.ingredients.slice());
   }
 
-  addIngredients(ingredients: Ingredient[]){
+  updateIngredient(index: number, newItem: Ingredient){
+    this.ingredients[index] = newItem;
+    this.ingredientsChanged.next(this.ingredients.slice());
+  }
+
+  addIngredients(ingredients: Ingredient[]) {
     // the '...' is spread syntax in javascript
     this.ingredients.push(...ingredients);
     this.ingredientsChanged.next(this.ingredients.slice());

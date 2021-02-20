@@ -26,8 +26,10 @@
           />
         </div>
         <div class="col-xs-12 form-group">
-          <button class="btn btn-success" type="submit" [disabled]="!f.valid">
-            Add
+          <button
+            class="btn btn-success"
+            type="submit"
+            [disabled]="!f.valid">{{ editMode ? 'Updata' : 'Add'}}
           </button>
           <button class="btn btn-danger" type="button">Delete</button>
           <button class="btn btn-primary" type="button">Clear</button>
