@@ -5,9 +5,9 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { RecipeService } from '../recipe.service';
 
 @Component({
-  selector: 'app-recipe-edit',
-  templateUrl: './recipe-edit.component.html',
-  styleUrls: ['./recipe-edit.component.css']
+  selector: "app-recipe-edit",
+  templateUrl: "./recipe-edit.component.html",
+  styleUrls: ["./recipe-edit.component.css"],
 })
 export class RecipeEditComponent implements OnInit {
   id: number;
@@ -16,26 +16,28 @@ export class RecipeEditComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private recipeService: RecipeService) { }
+    private recipeService: RecipeService
+  ) {}
 
   ngOnInit(): void {
-    this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.id = +params['id'];
-          this.editMode = params['id'] != null;
-          console.log('editmode = ' + this.editMode);
-          this.initForm();
-        }
-      );
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params["id"];
+      this.editMode = params["id"] != null;
+      console.log("editmode = " + this.editMode);
+      this.initForm();
+    });
   }
 
-  private initForm(){
-    let recipeName = '';
-    let recipeImagePath = '';
-    let RecipeDescription = '';
+  onSubmit(){
+    console.log(this.recipeForm.value);
+  }
 
-    if(this.editMode){
+  private initForm() {
+    let recipeName = "";
+    let recipeImagePath = "";
+    let RecipeDescription = "";
+
+    if (this.editMode) {
       const recipe = this.recipeService.getRecipe(this.id);
       recipeName = recipe.name;
       recipeImagePath = recipe.imagePath;
@@ -43,9 +45,9 @@ export class RecipeEditComponent implements OnInit {
     }
 
     this.recipeForm = new FormGroup({
-      'name': new FormControl(recipeName),
-      'imagePath': new FormControl(recipeImagePath),
-      'descriptoin': new FormControl(RecipeDescription),
+      name: new FormControl(recipeName),
+      imagePath: new FormControl(recipeImagePath),
+      description: new FormControl(RecipeDescription),
     });
   }
 }
