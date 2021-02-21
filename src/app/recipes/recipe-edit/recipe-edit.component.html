@@ -32,6 +32,7 @@
               id="imagePath"
               class="form-control"
               formControlName="imagePath"
+              #imagePath
             />
           </div>
         </div>
@@ -39,7 +40,7 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="form-group">
-            <img src="" class="image-responsive" />
+            <img [src]="imagePath.value" class="image-responsive" />
           </div>
         </div>
       </div>
