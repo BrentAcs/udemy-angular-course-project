@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 
@@ -28,13 +28,25 @@ export class RecipeEditComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.id = +params["id"];
       this.editMode = params["id"] != null;
-      console.log("editmode = " + this.editMode);
       this.initForm();
     });
   }
 
   onSubmit() {
     console.log(this.recipeForm.value);
+    // don't have to do this, can pass recipeForm.Value, as it's a match for Recipe class
+    // const newRecipe = new Recipe(
+    //   this.recipeForm.value['name'],
+    //   this.recipeForm.value['descriptoin'],
+    //   this.recipeForm.value['imagePath'],
+    //   this.recipeForm.value['ingredients']
+    // );
+    if(this.editMode){
+      this.recipeService.updateRecipe(this.id, this.recipeForm.value /*newRecipe*/);
+    } else {
+      this.recipeService.addRecipe(this.recipeForm.value /*newRecipe*/);
+    }
+    this.recipeForm.reset();
   }
 
   onAddIngredient() {
