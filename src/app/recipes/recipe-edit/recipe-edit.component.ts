@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { timeStamp } from 'console';
 
 import { RecipeService } from '../recipe.service';
 
@@ -55,11 +56,11 @@ export class RecipeEditComponent implements OnInit {
     }
     this.recipeForm.reset();
 
-    this.router.navigate(["/recipes"]);
+    this.onCancel();
   }
 
   onCancel() {
-    this.router.navigate(["/recipes"]);
+    this.router.navigate(["../", {relativeTo: this.route}]);
   }
 
   onAddIngredient() {
