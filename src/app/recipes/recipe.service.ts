@@ -9,21 +9,22 @@ import { Recipe } from "./recipe.model";
 export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
 
-  private recipes: Recipe[] = [
-    new Recipe(
-      "Tasty Taco",
-      "A really tasty taco.",
-      "https://assets.simpleviewinc.com/simpleview/image/fetch/c_fill,h_600,q_75,w_900/https://assets.simpleviewinc.com/simpleview/image/upload/v1/clients/flaglercountyfl/Photo_Mar_22_1_00_00_PM_a26f2f50-508f-4f20-898f-65cf5566ea72.jpg",
-      [new Ingredient("Meat", 1), new Ingredient("Shell", 2)]
-    ),
+  // private recipes: Recipe[] = [
+  //   new Recipe(
+  //     "Tasty Taco",
+  //     "A really tasty taco.",
+  //     "https://assets.simpleviewinc.com/simpleview/image/fetch/c_fill,h_600,q_75,w_900/https://assets.simpleviewinc.com/simpleview/image/upload/v1/clients/flaglercountyfl/Photo_Mar_22_1_00_00_PM_a26f2f50-508f-4f20-898f-65cf5566ea72.jpg",
+  //     [new Ingredient("Meat", 1), new Ingredient("Shell", 2)]
+  //   ),
 
-    new Recipe(
-      "Better Tasty Taco",
-      "An even better tasty taco.",
-      "https://assets.simpleviewinc.com/simpleview/image/fetch/c_fill,h_600,q_75,w_900/https://assets.simpleviewinc.com/simpleview/image/upload/v1/clients/flaglercountyfl/Photo_Mar_22_1_00_00_PM_a26f2f50-508f-4f20-898f-65cf5566ea72.jpg",
-      [new Ingredient("Better Meat", 1), new Ingredient("Better Shell", 3)]
-    ),
-  ];
+  //   new Recipe(
+  //     "Better Tasty Taco",
+  //     "An even better tasty taco.",
+  //     "https://assets.simpleviewinc.com/simpleview/image/fetch/c_fill,h_600,q_75,w_900/https://assets.simpleviewinc.com/simpleview/image/upload/v1/clients/flaglercountyfl/Photo_Mar_22_1_00_00_PM_a26f2f50-508f-4f20-898f-65cf5566ea72.jpg",
+  //     [new Ingredient("Better Meat", 1), new Ingredient("Better Shell", 3)]
+  //   ),
+  // ];
+  private recipes: Recipe[] = [];
 
   constructor(private shoppingListService: ShoppingListService) {}
 

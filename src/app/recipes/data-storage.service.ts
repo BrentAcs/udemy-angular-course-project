@@ -29,6 +29,16 @@ export class DataStorageStorage {
       .get<Recipe[]>(
         "https://ng-course-project-2e40c-default-rtdb.firebaseio.com/recipes.json"
       )
+      .pipe(
+        map((recipes) => {
+          return recipes.map((recipe) => {
+            return {
+              ...recipe,
+              ingredients: recipe.ingredients ? recipe.ingredients : [],
+            };
+          });
+        })
+      )
       .subscribe((recipes) => {
         // console.log(recipes);
         this.recipesService.setRecipies(recipes);
