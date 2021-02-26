@@ -14,10 +14,14 @@ import { DataStorageStorage } from "../recipes/data-storage.service";
   templateUrl: "./header.component.html",
 })
 export class HeaderComponent {
-  constructor(private dataStorageService: DataStorageStorage){}
+  constructor(private dataStorageService: DataStorageStorage) {}
 
-  onSaveData(){
+  onSaveData() {
     this.dataStorageService.storeRecipes();
+  }
+
+  onFetchData(){
+    this.dataStorageService.fetchRecipes();
   }
 
   // @Output() recipesClicked = new EventEmitter<string>();
