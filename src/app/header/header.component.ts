@@ -7,21 +7,21 @@ import {
   //AfterViewInit
  } from "@angular/core";
 import { Router } from "@angular/router";
-import { DataStorageStorage } from "../recipes/data-storage.service";
+import { DataStorageService } from "../recipes/data-storage.service";
 
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html",
 })
 export class HeaderComponent {
-  constructor(private dataStorageService: DataStorageStorage) {}
+  constructor(private dataStorageService: DataStorageService) {}
 
   onSaveData() {
     this.dataStorageService.storeRecipes();
   }
 
   onFetchData(){
-    this.dataStorageService.fetchRecipes();
+    this.dataStorageService.fetchRecipes().subscribe();
   }
 
   // @Output() recipesClicked = new EventEmitter<string>();
