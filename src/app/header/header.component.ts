@@ -7,12 +7,19 @@ import {
   //AfterViewInit
  } from "@angular/core";
 import { Router } from "@angular/router";
+import { DataStorageStorage } from "../recipes/data-storage.service";
 
 @Component({
   selector: "app-header",
-  templateUrl: "./header.component.html"
+  templateUrl: "./header.component.html",
 })
-export class HeaderComponent{
+export class HeaderComponent {
+  constructor(private dataStorageService: DataStorageStorage){}
+
+  onSaveData(){
+    this.dataStorageService.storeRecipes();
+  }
+
   // @Output() recipesClicked = new EventEmitter<string>();
   // @Output() shoppingListClicked = new EventEmitter<string>();
   // @ViewChild('recipesTab', {static: true}) recipesTab: ElementRef;
